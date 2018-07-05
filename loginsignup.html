@@ -1,0 +1,215 @@
+<!DOCTYPE html >
+<html >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>login and signup</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="sweetalert-master/dist/sweetalert.css">
+<script type="text/javascript" src="js/jquery.js"></script>
+<script src="js/jquery.color.js"></script>
+<script src="js/formvalidation.js"></script>
+<script src="sweetalert-master/dist/sweetalert.min.js"></script>
+
+<script>
+$(document).ready(function()
+{
+
+$(".tab").click(function()
+{
+var X=$(this).attr('id');
+
+if(X=='signup')
+{
+$("#login").removeClass('select');
+$("#signup").addClass('select');
+$("#loginbox").slideUp();
+$("#signupbox").slideDown();
+}
+else
+{
+$("#signup").removeClass('select');
+$("#login").addClass('select');
+$("#signupbox").slideUp();
+$("#loginbox").slideDown();
+}
+
+});
+
+});
+
+function validate(){
+	var email = $('#email').val();
+	var pass = $('#pass').val();
+	var isAdmin = $('#chkAdmin').prop('checked');
+	var popUp = document.getElementById('txtError');
+
+	if(isAdmin==true)
+	{
+		window.location.href = "admin.html";
+}
+if( (email=="")||(email==null)) {
+
+	  sweetAlert("Enter Email id!");
+
+}
+else if ((pass=="")||(pass==null)) {
+	sweetAlert({
+	title: "Enter Password",
+    text: "Before clicking  the login button",
+    type: "error"
+});
+
+}
+else {
+	window.open("welcome.html");
+
+}
+	}
+
+	function test(){
+		var email1 = $('#email1').val();
+		var fname = $('#fname').val();
+		var lname = $('#lname').val();
+		var father_name = $('#father_name').val();
+		var cname = $('#cname').val();
+		var dept = $('#dept').val();
+
+		if ((fname=="")||(fname==null)) {
+			sweetAlert({
+			title: "Enter First Name",
+				text: "Before clicking  the Signup button",
+				type: "error"
+		});
+
+		}
+		else if ((lname=="")||(lname==null)) {
+			sweetAlert({
+			title: "Enter last name",
+		    text: "Before clicking  the Signup button",
+		    type: "error"
+		});
+}
+		else if( (father_name=="")||(father_name==null)) {
+
+			  sweetAlert("Enter Father's Name!");
+
+		}
+
+	else if( (email1=="")||(email1==null)) {
+
+		  sweetAlert("Enter Email id!");
+
+	}
+
+
+
+
+	else if ((cname=="")||(cname==null)) {
+		sweetAlert({
+		title: "Enter College Name",
+	    text: "Before clicking  the Signup button",
+	    type: "error"
+	});
+
+	}
+	else if ((dept=="")||(dept==null)) {
+		sweetAlert({
+		title: "Enter Department",
+	    text: "Before clicking  the Signup button",
+	    type: "error"
+	});
+
+	}
+
+	else {
+		window.location.href = "welcome.html";
+	}
+		}
+</script>
+
+<style>
+</style>
+</head>
+
+<body>
+	<nav class="navbar navbar-inverse navbar-fixed">
+		<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+<img src="img/logo.png" class="navbar-brand">
+			<a href="#" class="navbar-brand">Prashikshan</a>
+			</div>
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav">
+				<li><a href="#"> About</a></li>
+				<li><a href="#"> Content</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+
+				<li><a href="admin.html"> Admin View</a></li>
+			</ul>
+		</div>
+
+</div>
+
+	</nav>
+
+<div style="margin:40px">
+<div id="container">
+<div id="tabbox">
+<a href="#" id="signup" class="tab signup">Signup</a>
+<a href="#" id="login" class="tab select">Login</a>
+</div>
+<div id="panel">
+<div id="loginbox" ><h1 style="font-size:35px">Login Form</h1>
+	<form style="height:200px;width:300px;margin-left:9px;" action="welcome.html" id="login">
+
+	  <label class="col-xs-3 control-label">email:</label>
+	  <input type="email" class="form-control" id="email" placeholder="Email" required ><br><br>
+		 <label class="col-xs-3 control-label">Password:</label>
+		<input type="password" class="form-control" id="pass" placeholder="Enter Password" required>
+		<input type="checkbox" id="chkAdmin"
+    name="checked"><div class="alert alert-info">Click the checkbox to view admin pannel</div><br>
+<button type="button" class="btn btn-info btn-block" id="btnLogin" onclick="validate()">Login</button>
+	</form>
+</div>
+<div id="signupbox"><h1 style="font-size:35px ">Singup Form</h1>
+	<form style="height:400px;width:347px;background-color:white;margin-left:-6px" action="loginsignup.html" id="signup">
+		<b>First Name:</b><br>
+		<input type="text" class="form-control" id="fname" placeholder="First  Name" required><br>
+		<b>Last Name:</b><br>
+		<input type="text" class="form-control" id="lname" placeholder="Last  Name" required><br>
+		<b>Father's Name:</b><br>
+		<input type="text" class="form-control" id="father_name" placeholder="Father's  Name" required><br>
+		<b>Email:</b><br>
+		<input type="email" class="form-control" id="email1" placeholder="Email" required>
+		<b>College Name:</b><br>
+		<input type="text" class="form-control" id="cname" placeholder="College  Name" required><br>
+		<b>Department:</b><br>
+		<input type="text" class="form-control" id="dept" placeholder="Department" required><br>
+
+<button type="button" class="btn btn-info btn-block" onclick="test()">Signup</button></div>
+	</form>
+
+</div>
+
+</div>
+</div>
+
+
+
+</div>
+
+<footer class="footer">
+	<div class="container">
+	<p class="text-muted">@Priyanka Mahato</p>
+	</div>
+	</footer>
+</body>
+</html>
